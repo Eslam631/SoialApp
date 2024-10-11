@@ -1,0 +1,119 @@
+<h1 class="mt-20 text-3xl font-semibold text-center text-main">Linked Posted</h1>
+
+
+<section class="p-4 mx-auto my-10 bg-white shadow md:w-1/2 rounded-xl ">
+<h1 class="m-5 text-3xl font-semibold text-main">regiser </h1>
+<form  class="" [formGroup]="registerForm" (ngSubmit)="registerSubmit(registerForm)">
+
+  <div class="mb-5">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
+    <input formControlName="name" type="text" placeholder="your name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+@if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {  <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+@if (registerForm.get('name')?.getError('required')) {
+  <p>"name is required"</p>}
+  @if (registerForm.get('name')?.getError('minlength')) {
+
+  <p>"Name Should be more than or equal  3 chars"</p>}
+  @if (registerForm.get('name')?.getError('maxlength')) {
+  <p>"Name Should be less than or equal  20 chars"</p>}
+
+</div>}
+
+  </div>
+  <div class="mb-5">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+    <input formControlName="email"  type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+    @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {  <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+      @if (registerForm.get('email')?.getError('required')) {
+        <p>"email is required"</p>}
+        @if (registerForm.get('email')?.getError('email')) {
+
+        <p>"email isn't valid"</p>}
+
+
+      </div>}
+  </div>
+
+  <div class="mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+    <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+
+    @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {  <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+      @if (registerForm.get('password')?.getError('required')) {
+        <p>"password is required"</p>}
+        @if (registerForm.get('password')?.getError('pattern')) {
+
+        <p>"password must start with upperCase  then special chars then from 6 to more any chars then number"</p>}
+
+
+      </div>}
+  </div>
+  <div class="mb-5">
+    <label for="repassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">repassword</label>
+    <input formControlName="rePassword" type="password" id="repassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+
+
+
+         @if (registerForm.getError('misMatch')&& registerForm.get('rePassword')?.touched) {
+
+        <p class="p-3 text-red-800 bg-red-200 rounded-md">"password confirmation is incorrect"</p>}
+
+
+      </div>
+
+  <div class="mb-5">
+    <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your date</label>
+    <input formControlName="dateOfBirth" type="date" placeholder="your date" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+    @if (registerForm.get('dateOfBirth')?.errors && registerForm.get('dateOfBirth')?.touched &&  registerForm.get('dateOfBirth')?.dirty ) {
+       <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+      @if (registerForm.get('dateOfBirth')?.getError('required')) {
+        <p>"date is required"</p>}
+
+
+
+      </div>}
+
+  </div>
+
+  <fieldset class="flex gap-x-6">
+    <div class="flex items-center mb-4">
+      <label for="gender-option-male" class="block text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">
+        <input formControlName="gender" id="gender-option-male" type="radio" name="gender" value="male" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
+        male
+      </label>
+    </div>
+
+    <div class="flex items-center mb-4">
+      <label for="gender-option-female" class="block text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">
+        <input formControlName="gender" id="gender-option-female" type="radio" name="gender" value="female" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
+       female
+      </label>
+    </div>
+
+  </fieldset>
+  @if (registerForm.get('gender')?.errors  &&  registerForm.get('gender')?.touched && registerForm.get('gender')?.dirty) {
+    <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+   @if (registerForm.get('gender')?.getError('required')) {
+     <p>"gender is required"</p>}
+
+
+
+
+   </div>}
+   @if (msgError) {
+    <p class="p-3 m-5 text-red-800 bg-red-200 rounded-md">{{msgError}}</p>
+   }
+<div class="flex items-center ">
+  <button type="submit" [disabled]="registerForm.invalid"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Signup</button>
+  <a routerLink="/login" class="px-3 text-blue-700 underline decoration-solid">signIn</a>
+</div>
+  @if(msgSuccess){
+<p class="p-4 m-4 text-green-800 bg-green-300">success</p>
+  }
+</form>
+</section>

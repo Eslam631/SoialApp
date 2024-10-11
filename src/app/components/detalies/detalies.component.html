@@ -1,0 +1,37 @@
+@if (detaliesPost) {
+<section infiniteScroll
+ class="flex flex-col gap-4 mx-auto mt-20 lg:w-1/2 md:w-3/4">
+
+
+
+
+
+
+  <article   class="flex flex-col gap-4 p-3 bg-white rounded-md">
+
+    <div class="flex items-center gap-3">
+      <img class="w-10 h-10 rounded-full"[src]="detaliesPost.user.photo" alt="profile img">
+      <div>
+      <h3 class="font-bold">{{detaliesPost.user.name}}</h3>
+      <span class="font-light text-gray-400">{{detaliesPost.createdAt |date}}</span></div>
+    </div>
+    <p>{{detaliesPost.body}} </p>
+  <img [src]="detaliesPost.image" class="w-full" alt="">
+
+
+
+
+
+    <app-comments [postID]="detaliesPost._id"></app-comments>
+
+
+
+
+
+
+
+</article>
+
+
+</section>
+}

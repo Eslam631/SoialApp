@@ -1,0 +1,59 @@
+
+<h1 class="mt-20 text-3xl font-semibold text-center text-main">Linked Posted</h1>
+
+
+<section class="p-4 mx-auto my-10 bg-white shadow md:w-1/3 rounded-xl ">
+<h1 class="m-5 text-3xl font-semibold text-main">Login Now </h1>
+<form  [formGroup]="changePasswordForm" (ngSubmit)="changePaswwordSumbint(changePasswordForm)" class="">
+
+
+
+
+  <div class="mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">old password</label>
+    <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+
+
+
+    @if (changePasswordForm.get('password')?.errors && changePasswordForm.get('password')?.touched) {  <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+      @if (changePasswordForm.get('password')?.getError('required')) {
+        <p>"password is required"</p>}
+        @if (changePasswordForm.get('password')?.getError('pattern')) {
+
+        <p>"password must start with upperCase  then special chars then from 6 to more any chars then number"</p>}
+
+
+      </div>}
+
+  </div>
+
+  <div class="mb-5">
+    <label for="repassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">newPassword</label>
+    <input formControlName="newPassword" type="password" id="repassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+
+
+    @if (changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched) {  <div class="p-3 text-red-800 bg-red-200 rounded-md">
+
+      @if (changePasswordForm.get('newPassword')?.getError('required')) {
+        <p>"password is required"</p>}
+        @if (changePasswordForm.get('newPassword')?.getError('pattern')) {
+
+        <p>"password must start with upperCase  then special chars then from 6 to more any chars then number"</p>}
+
+
+      </div>}
+
+
+      </div>
+
+
+
+  <button type="submit" [disabled]="changePasswordForm.invalid" class="mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm: px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">updatePassword</button>
+
+
+
+
+
+</form>
+</section>
