@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-changepasswword',
@@ -12,6 +13,8 @@ import { AuthService } from '../../core/services/auth.service';
 export class ChangepasswwordComponent {
   private readonly _FormBuilder=inject(FormBuilder)
   private readonly _AuthService=inject(AuthService)
+  private readonly _ToastrService=inject(ToastrService)
+
   msgSuccess:boolean=false
   msgError:string=''
 
@@ -27,6 +30,8 @@ export class ChangepasswwordComponent {
     this._AuthService.changePassword(form.value).subscribe({
       next: (res) => {
         console.log(res)
+        
+        this._ToastrService.success(res.message)
       },
       error: (err) => {
         console.log(err)

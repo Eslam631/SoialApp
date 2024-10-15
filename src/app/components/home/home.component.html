@@ -74,7 +74,7 @@
       <h3 class="font-bold">{{post.user.name}}</h3>
       <span class="font-light text-gray-400">{{post.createdAt |date}}</span></div>
     </div>
-    <p>{{post.body}}<span [routerLink]="['/detalies',post._id]" class="font-light text-gray-400 cursor-pointer ps-5">read details</span> </p>
+    <p class="">{{post.body}} <span [routerLink]="['/detalies',post._id]" class="font-light text-gray-400 cursor-pointer ps-5">read details</span> </p>
   <img [src]="post.image" class="w-full" alt="">
 
 
